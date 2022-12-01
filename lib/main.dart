@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'generated/l10n.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +15,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      // 讲en设置为第一项,没有适配语言时,英语为首选项
+      supportedLocales: [
+        const Locale('en', ''),
+        ...S.delegate.supportedLocales
+      ],
+      // 插件目前不完善手动处理简繁体
+      localeResolutionCallback: (locale, supportLocales) {
+        // 中文 简繁体处理
+        if (locale?.languageCode == 'zh') {
+          if (locale?.scriptCode == 'Hant') {
+            return const Locale('zh', 'HK'); //繁体
+          } else {
+            return const Locale('zh', 'CN'); //简体
+          }
+        }
+        return null;
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -95,9 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            Text(S.of(context).hello),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
