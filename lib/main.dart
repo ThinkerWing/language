@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -12,6 +13,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: const [
+        // 本地化应用的代理
+        AppLocalizations.delegate, // 应用程序本地化代理
+        GlobalMaterialLocalizations.delegate, // 全局材质组件的本地化代理
+        GlobalWidgetsLocalizations.delegate, // 全局组件本地化代理
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'), // English, no country code
+        Locale('zh', 'CN'),
+      ],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -95,9 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            Text(AppLocalizations.of(context)!.hello),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
