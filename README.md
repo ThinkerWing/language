@@ -6,6 +6,12 @@
 该分支对应的提交是使用Android Studio 和 Flutter Intl插件 并根据下文的实践，兼容汉字简体和繁体字
 [https://juejin.cn/post/6844903823119482888](https://juejin.cn/post/6844903823119482888)
 [https://github.com/ThinkerWing/language/commit/f5fd58453f85b5b9c0e58df6270fac4cf22f200d](https://github.com/ThinkerWing/language/commit/f5fd58453f85b5b9c0e58df6270fac4cf22f200d)
+
+# feat/mobx Flutter 状态管理- 使用 MobX实现计数器
+学习过程记录的blog:[https://blog.csdn.net/daddykei/article/details/128143158](https://blog.csdn.net/daddykei/article/details/128143158)
+
+
+学习来源:[https://juejin.cn/post/6954523549386162213](https://juejin.cn/post/6954523549386162213)
 # language
 
 A new Flutter project.
